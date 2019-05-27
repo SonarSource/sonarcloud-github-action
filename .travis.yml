@@ -1,0 +1,8 @@
+# any language
+language: ruby
+
+services:
+  - docker
+
+script:
+  - docker build -t sonarsource/sonarcloud-github-action .

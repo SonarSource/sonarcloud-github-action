@@ -1,12 +1,60 @@
-# GitHub Action for SonarCloud
+# Scan your code with SonarCloud
 
-This GitHub Action analyzes source code to detect bugs, vulnerabilities and Quality flaws.
-Results are available in both [SonarCloud](https://sonarcloud.io/) and GitHub Checks.
+> Using this GitHub Action, scan your code with [SonarCloud](https://sonarcloud.io/) to detects bugs, vulnerabilities and code smells in more than 25 programming languages!
 
-Analysis of pull requests is supported, without any specific configuration.
+<img src="./images/SonarCloud-72px.png">
+
+## Requirements
+
+* Have an account on SonarCloud. [Sign up for free now](https://sonarcloud.io/sessions/init/github) if it's not already the case!
+* The repository to analyze is set up on SonarCloud. [Set it up](https://sonarcloud.io/projects/create) in just one click.
+
+## Usage
+
+Project metadata, including the location to the sources to be analyzed, must be declared in the file `sonar-project.properties` in the base directory:
+
+```
+sonar.organization=<replace with your SonarCloud organization key>
+sonar.projectKey=<replace with the key generated when setting up the project on SonarCloud>
+
+// relative paths to source directories. More details and properties are described
+// in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/ 
+sonar.sources=.
+```
+
+The workflow, usually declared in `.github/main.workflow`, looks like:
+
+```
+workflow "Main Worflow" {
+  on = "push"
+  resolves = "SonarCloud Trigger"
+}
+
+action "SonarCloud Trigger" {
+  uses = "sonarsource/sonarcloud-github-action@master"
+  secrets = ["GITHUB_TOKEN", "SONAR_TOKEN"]
+}
+```
+
+### Secrets
+
+- `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
+
+## Example of pull request analysis
+
+<img src="./images/SonarCloud-analysis-in-Checks.png">
+
+## Do not use this GitHub action if you are in the following situations
+
+* Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build
+* Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
+* You want to analyze a .NET solution: use the [SonarCloud Azure DevOps Extension](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarcloud) to analyze your code on SonarCloud with Azure Pipelines
+* You want to analyze C/C++ code: rely on our [Travis-CI extension](https://docs.travis-ci.com/user/sonarcloud/) and look at [our sample C/C++ project](https://github.com/SonarSource/sq-com_example_c-sqscanner-travis)
 
 ## License
 
 The Dockerfile and associated scripts and documentation in this project are released under the LGPLv3 License.
 
 Container images built with this project include third party materials.
+
+[![Build Status](https://travis-ci.com/SonarSource/sonarcloud-github-action.svg?branch=master)](https://travis-ci.com/SonarSource/sonarcloud-github-action)
