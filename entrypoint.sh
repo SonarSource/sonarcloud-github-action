@@ -19,8 +19,8 @@ fi
 
 if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
   EVENT_ACTION=$(jq -r ".action" "${GITHUB_EVENT_PATH}")
-  if [[ "${EVENT_ACTION}" != "opened" ]] && [[ "${EVENT_ACTION}" != "synchronize" ]]; then
-	  echo "No need to run analysis"
+  if [[ "${EVENT_ACTION}" != "opened" ]]; then
+	  echo "No need to run analysis. It is already triggered by the push event."
 	  exit 78
   fi
 fi
