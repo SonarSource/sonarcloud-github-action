@@ -17,15 +17,15 @@ Project metadata, including the location to the sources to be analyzed, must be 
 sonar.organization=<replace with your SonarCloud organization key>
 sonar.projectKey=<replace with the key generated when setting up the project on SonarCloud>
 
-// relative paths to source directories. More details and properties are described
-// in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/ 
+# relative paths to source directories. More details and properties are described
+# in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/ 
 sonar.sources=.
 ```
 
 The workflow, usually declared in `.github/main.workflow`, looks like:
 
 ```
-workflow "Main Worflow" {
+workflow "Main Workflow" {
   on = "push"
   resolves = "SonarCloud Trigger"
 }
