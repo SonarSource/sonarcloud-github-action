@@ -19,10 +19,11 @@ ENV SONAR_SCANNER_HOME=${SONAR_SCANNER_HOME} \
 
 ENV PATH=${PATH}:${SONAR_SCANNER_HOME}/bin:${NODEJS_HOME}/bin
 
+WORKDIR /opt
+
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends wget \
-    && apt-get install -y --no-install-recommends git \
-    && apt-get install -y --no-install-recommends jq
+    && apt-get install -y --no-install-recommends wget git jq unzip tar xz-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN wget -U "sonarcloud-github-action" -q -O sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip \
     && unzip sonar-scanner-cli.zip \
@@ -30,7 +31,7 @@ RUN wget -U "sonarcloud-github-action" -q -O sonar-scanner-cli.zip https://binar
     && mv sonar-scanner-${SONAR_SCANNER_VERSION} ${SONAR_SCANNER_HOME}
 
 RUN wget -q -O nodejs.tar.xz https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-x64.tar.xz \
-    && tar Jxf nodejs.tar.xz \
+    && tar -Jxf nodejs.tar.xz \
     && mv node-${NODEJS_VERSION}-linux-x64 ${NODEJS_HOME}
 
 RUN npm install -g typescript
