@@ -5,4 +5,5 @@ services:
   - docker
 
 script:
+  - docker -v
   - docker build --no-cache -t sonarsource/sonarcloud-github-action .
