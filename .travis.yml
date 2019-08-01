@@ -1,8 +1,8 @@
 # any language
-language: ruby
+language: python
 
 services:
   - docker
 
 script:
-  - docker build -t sonarsource/sonarcloud-github-action .
+  - docker build --no-cache -t sonarsource/sonarcloud-github-action .
