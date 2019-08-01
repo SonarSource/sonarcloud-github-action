@@ -7,3 +7,5 @@ services:
 script:
   - docker -v
   - docker build --no-cache -t sonarsource/sonarcloud-github-action .
+  - docker image ls sonarsource/sonarcloud-github-action
+  - docker history sonarsource/sonarcloud-github-action
