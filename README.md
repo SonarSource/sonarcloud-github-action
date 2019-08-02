@@ -4,7 +4,7 @@ Using this GitHub Action, scan your code with [SonarCloud](https://sonarcloud.io
 
 <img src="./images/SonarCloud-72px.png">
 
-SonarCloud is the leading product for Continuous Code Quality online, totally free for open-source projects. It supports all major programming languages, including C#, VB .Net, JavaScript, TypeScript, C/C++ and many more. If your code is closed source, SonarCloud also offers a paid plan to run private analyses
+SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, C/C++ and many more. If your code is closed source, SonarCloud also offers a paid plan to run private analyses
 
 ## Requirements
 
