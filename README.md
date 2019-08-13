@@ -27,15 +27,19 @@ sonar.sources=.
 The workflow, usually declared in `.github/main.workflow`, looks like:
 
 ```
-workflow "Main Workflow" {
-  on = "push"
-  resolves = "SonarCloud Trigger"
-}
-
-action "SonarCloud Trigger" {
-  uses = "sonarsource/sonarcloud-github-action@master"
-  secrets = ["GITHUB_TOKEN", "SONAR_TOKEN"]
-}
+on: push
+name: Main Workflow
+jobs:
+  sonarCloudTrigger:
+    name: SonarCloud Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
 ### Secrets
