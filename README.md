@@ -15,7 +15,7 @@ SonarCloud is the leading product for Continuous Code Quality & Code Security on
 
 Project metadata, including the location to the sources to be analyzed, must be declared in the file `sonar-project.properties` in the base directory:
 
-```
+```properties
 sonar.organization=<replace with your SonarCloud organization key>
 sonar.projectKey=<replace with the key generated when setting up the project on SonarCloud>
 
@@ -26,7 +26,7 @@ sonar.sources=.
 
 The workflow, usually declared in `.github/main.workflow`, looks like:
 
-```
+```yaml
 on: push
 name: Main Workflow
 jobs:
