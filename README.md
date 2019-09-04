@@ -24,7 +24,7 @@ sonar.projectKey=<replace with the key generated when setting up the project on 
 sonar.sources=.
 ```
 
-The workflow, usually declared in `.github/main.workflow`, looks like:
+The workflow, usually declared in `.github/workflows/build.yml`, looks like:
 
 ```yaml
 on: push
