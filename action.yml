@@ -6,3 +6,8 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+inputs:
+  projectBaseDir:
+    description: 'Set the sonar.projectBaseDir analysis property'
+    required: false
+    default: '.'
