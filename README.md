@@ -24,14 +24,6 @@ sonar.projectKey=<replace with the key generated when setting up the project on 
 sonar.sources=.
 ```
 
-You can change the analysis base directory by using the optional input `projectBaseDir` like this:
-
-```yaml
-uses: sonarsource/sonarcloud-github-action@master
-with:
-  projectBaseDir: my-custom-directory
-```
-
 The workflow, usually declared in `.github/workflows/build.yml`, looks like:
 
 ```yaml
@@ -50,9 +42,18 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
+You can change the analysis base directory by using the optional input `projectBaseDir` like this:
+
+```yaml
+uses: sonarsource/sonarcloud-github-action@master
+with:
+  projectBaseDir: my-custom-directory
+```
+
 ### Secrets
 
 - `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
+- *`GITHUB_TOKEN` – Provided by Github (see [Authenticating with the GITHUB_TOKEN](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)).*
 
 ## Example of pull request analysis
 
