@@ -51,13 +51,44 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
-You can change the analysis base directory by using the optional input `projectBaseDir` like this:
+You can add any of the following optional inputs:
+
+- `organization` *-- translates to `sonar.organization`*
+- `projectBaseDir`  *-- translates to `sonar.projectBaseDir`*
+- `projectKey`  *-- translates to `sonar.projectKey`*
+- `sources`  *-- translates to `sonar.sources`*
+- `tests`  *-- translates to `sonar.tests`*
+- `verbose`  *-- translates to `sonar.verbose`*
+
+like this:
 
 ```yaml
-uses: sonarsource/sonarcloud-github-action@master
-with:
-  projectBaseDir: my-custom-directory
+- name: Analyze with SonarCloud
+  uses: sonarsource/sonarcloud-github-action@master
+  with:
+    organization: my-organization
+    projectBaseDir: my-custom-directory
+    projectKey: my-projectkey
+    sources: lib/
+    tests: tests/
+    verbose: 'true'
 ```
+
+In case you need to add additional options to the scanner, you can use the `args` option:
+
+```yaml
+- name: Analyze with SonarCloud
+  uses: sonarsource/sonarcloud-github-action@master
+  with:
+    organization: my-organization
+    projectKey: my-projectkey
+    args: >
+      -Dsonar.python.coverage.reportPaths=coverage.xml
+      -Dsonar.test.exclusions=tests/**
+```
+
+More information about possible sonar-scanner parameters are found in the documentation at:
+https://docs.sonarqube.org/latest/analysis/analysis-parameters/
 
 ### Secrets
 

@@ -21,6 +21,25 @@ if [[ -z "${SONARCLOUD_URL}" ]]; then
   SONARCLOUD_URL="https://sonarcloud.io"
 fi
 
-sonar-scanner -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} -Dsonar.host.url=${SONARCLOUD_URL}
+ARGS="${INPUT_ARGS}"
+if [[ "${INPUT_ORGANIZATION}" ]]; then
+  ARGS="${ARGS} -Dsonar.organization=${INPUT_ORGANIZATION}"
+fi
 
+if [[ "${INPUT_PROJECTKEY}" ]]; then
+  ARGS="${ARGS} -Dsonar.projectKey=${INPUT_PROJECTKEY}"
+fi
 
+if [[ "${INPUT_SOURCES}" ]]; then
+  ARGS="${ARGS} -Dsonar.sources=${INPUT_SOURCES}"
+fi
+
+if [[ "${INPUT_TESTS}" ]]; then
+  ARGS="${ARGS} -Dsonar.tests=${INPUT_TESTS}"
+fi
+
+if [[ "${INPUT_VERBOSE}" != "false" && "${INPUT_VERBOSE}" != "False" ]]; then
+  ARGS="${ARGS} -Dsonar.verbose=true"
+fi
+
+sonar-scanner -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} -Dsonar.host.url=${SONARCLOUD_URL} ${ARGS}
