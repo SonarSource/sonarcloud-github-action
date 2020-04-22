@@ -47,6 +47,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
+In order to provide features such blame information, it is necessary not to use a shallow copy of the git. To make this possible, change the above configuration for the checkout: 
+```
+uses: actions/checkout@v2
+with:
+  fetch-depth: 0
+```
+More detailed description [here](https://github.com/actions/checkout).
 
 You can change the analysis base directory by using the optional input `projectBaseDir` like this:
 
