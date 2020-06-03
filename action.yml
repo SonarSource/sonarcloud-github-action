@@ -12,23 +12,7 @@ inputs:
   args:
     description: Additional arguments to the sonarcloud scanner
     required: false
-  organization:
-    description: Set the sonar.organization analysis property
-    required: false
   projectBaseDir:
     description: Set the sonar.projectBaseDir analysis property
     required: false
     default: .
-  projectKey:
-    description: Set the sonar.projectKey analysis property
-    required: false
-  sources:
-    description: Set the sonar.sources analysis property
-    required: false
-  tests:
-    description: Set the sonar.tests analysis property
-    required: false
-  verbose:
-    description: Set the sonar.verbose analysis property
-    required: false
-    default: 'false'

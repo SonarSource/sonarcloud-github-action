@@ -51,43 +51,23 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
-You can add any of the following optional inputs:
-
-- `organization` *-- translates to `sonar.organization`*
-- `projectBaseDir`  *-- translates to `sonar.projectBaseDir`*
-- `projectKey`  *-- translates to `sonar.projectKey`*
-- `sources`  *-- translates to `sonar.sources`*
-- `tests`  *-- translates to `sonar.tests`*
-- `verbose`  *-- translates to `sonar.verbose`*
-
-like this:
-
-```yaml
-- name: Analyze with SonarCloud
-  uses: sonarsource/sonarcloud-github-action@master
-  with:
-    organization: my-organization
-    projectBaseDir: my-custom-directory
-    projectKey: my-projectkey
-    sources: lib/
-    tests: tests/
-    verbose: 'true'
-```
-
 In case you need to add additional options to the scanner, you can use the `args` option:
 
 ```yaml
 - name: Analyze with SonarCloud
   uses: sonarsource/sonarcloud-github-action@master
   with:
-    organization: my-organization
-    projectKey: my-projectkey
     args: >
+      -Dsonar.organization=my-organization
+      -Dsonar.projectKey=my-projectkey
       -Dsonar.python.coverage.reportPaths=coverage.xml
+      -Dsonar.sources=lib/
       -Dsonar.test.exclusions=tests/**
+      -Dsonar.tests=tests/
+      -Dsonar.verbose=true
 ```
 
-More information about possible sonar-scanner parameters are found in the documentation at:
+More information about possible sonar-scanner parameters is found in the documentation at:
 https://docs.sonarqube.org/latest/analysis/analysis-parameters/
 
 ### Secrets
