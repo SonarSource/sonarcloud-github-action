@@ -51,12 +51,21 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
+You can change the analysis base directory by using the optional input `projectBaseDir` like this:
+
+```yaml
+uses: sonarsource/sonarcloud-github-action@master
+with:
+  projectBaseDir: my-custom-directory
+```
+
 In case you need to add additional options to the scanner, you can use the `args` option:
 
 ```yaml
 - name: Analyze with SonarCloud
   uses: sonarsource/sonarcloud-github-action@master
   with:
+    projectBaseDir: my-custom-directory
     args: >
       -Dsonar.organization=my-organization
       -Dsonar.projectKey=my-projectkey
