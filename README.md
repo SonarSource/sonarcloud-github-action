@@ -59,7 +59,7 @@ with:
   projectBaseDir: my-custom-directory
 ```
 
-In case you need to add additional options to the scanner, you can use the `args` option:
+In case you need to add additional analysis parameters, you can use the `args` option:
 
 ```yaml
 - name: Analyze with SonarCloud
@@ -76,8 +76,8 @@ In case you need to add additional options to the scanner, you can use the `args
       -Dsonar.verbose=true
 ```
 
-More information about possible sonar-scanner parameters is found in the documentation at:
-https://docs.sonarqube.org/latest/analysis/analysis-parameters/
+More information about possible analysis parameters is found in the documentation at:
+https://sonarcloud.io/documentation/analysis/analysis-parameters/
 
 ### Secrets
 
