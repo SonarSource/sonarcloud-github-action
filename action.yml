@@ -1,13 +1,18 @@
-name: 'SonarCloud Scan'
-description: 'Scan your code with SonarCloud to detect bugs, vulnerabilities and code smells in more than 25 programming languages.'
+name: SonarCloud Scan
+description: >
+  Scan your code with SonarCloud to detect bugs, vulnerabilities and code smells
+  in more than 25 programming languages.
 branding:
-  icon: 'check'
-  color: 'green'
+  icon: check
+  color: green
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
 inputs:
-  projectBaseDir:
-    description: 'Set the sonar.projectBaseDir analysis property'
+  args:
+    description: Additional arguments to the sonarcloud scanner
     required: false
-    default: '.'
+  projectBaseDir:
+    description: Set the sonar.projectBaseDir analysis property
+    required: false
+    default: .

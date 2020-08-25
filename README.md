@@ -59,6 +59,26 @@ with:
   projectBaseDir: my-custom-directory
 ```
 
+In case you need to add additional analysis parameters, you can use the `args` option:
+
+```yaml
+- name: Analyze with SonarCloud
+  uses: sonarsource/sonarcloud-github-action@master
+  with:
+    projectBaseDir: my-custom-directory
+    args: >
+      -Dsonar.organization=my-organization
+      -Dsonar.projectKey=my-projectkey
+      -Dsonar.python.coverage.reportPaths=coverage.xml
+      -Dsonar.sources=lib/
+      -Dsonar.test.exclusions=tests/**
+      -Dsonar.tests=tests/
+      -Dsonar.verbose=true
+```
+
+More information about possible analysis parameters is found in the documentation at:
+https://sonarcloud.io/documentation/analysis/analysis-parameters/
+
 ### Secrets
 
 - `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
