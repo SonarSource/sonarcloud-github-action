@@ -1,0 +1,31 @@
+name: Build and comment docker image size
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+env:
+  IMAGE_NAME: sonarcloud-github-action
+
+jobs:
+  build-comment:
+    if: github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag ghcr.io/$GITHUB_ACTOR/$IMAGE_NAME:test-build --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Create and publish PR comment
+        run: |
+          PR_NUMBER=`echo $GITHUB_REF | cut -f 3 -d /`
+          echo '```' >> COMMENT_BODY.txt
+          docker image ls ghcr.io/$GITHUB_ACTOR/$IMAGE_NAME:test-build >> COMMENT_BODY.txt
+          docker history ghcr.io/$GITHUB_ACTOR/$IMAGE_NAME:test-build >> COMMENT_BODY.txt
+          echo '```' >> COMMENT_BODY.txt
+          gh pr comment $PR_NUMBER -F COMMENT_BODY.txt
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_REF: ${{secrets.GITHUB_REF}}
