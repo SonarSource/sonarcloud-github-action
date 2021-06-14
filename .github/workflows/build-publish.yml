@@ -1,0 +1,24 @@
+name: Build and publish to ghcr.io
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  IMAGE_NAME: sonarcloud-github-action
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag ghcr.io/$GITHUB_ACTOR/$IMAGE_NAME:`basename $GITHUB_REF` --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push docker image
+        run:  docker push ghcr.io/$GITHUB_ACTOR/$IMAGE_NAME:`basename $GITHUB_REF`
