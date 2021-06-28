@@ -7,12 +7,12 @@ if [[ -z "${SONAR_TOKEN}" ]]; then
   exit 1
 fi
 
-if [[ -f "pom.xml" ]]; then
+if [[ -f "${INPUT_PROJECTBASEDIR%/}/pom.xml" ]]; then
   echo "Maven project detected. You should run the goal 'org.sonarsource.scanner.maven:sonar' during build rather than using this GitHub Action."
   exit 1
 fi
 
-if [[ -f "build.gradle" ]]; then
+if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle" ]]; then
   echo "Gradle project detected. You should use the SonarQube plugin for Gradle during build rather than using this GitHub Action."
   exit 1
 fi
