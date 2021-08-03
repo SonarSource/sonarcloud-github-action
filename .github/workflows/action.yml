@@ -3,16 +3,7 @@
 name: SonarQube GitHub Action
 
 # Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: sq-action
-  pull_request:
-    types: [opened, synchronize, reopened]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  name: Main Workflow
+on: push
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
@@ -27,8 +18,11 @@ jobs:
       #AST sonar Token
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    - name: Analyze with SonarCloud
+      uses: sonarsource/sonarqube-scan-action@master
       with:
-        args: >
+       projectBaseDir: sonarqube-github-action
+       args: >
           -Dsonar.projectKey=ast.yogest
           -Dsonar.projectName=AST-YOGESH
           -Dsonar.verbose=true
