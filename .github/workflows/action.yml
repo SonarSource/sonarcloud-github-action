@@ -6,7 +6,7 @@ name: SonarQube GitHub Action
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: master
+    branches: sq-action
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -28,7 +28,6 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
-        projectBaseDir: app/src
         args: >
           -Dsonar.projectKey=ast.yogest
           -Dsonar.projectName=AST-YOGESH
