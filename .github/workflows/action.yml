@@ -18,12 +18,12 @@ jobs:
       #AST sonar Token
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    - name: Analyze with SonarCloud
+    - name: Analyze with SonarQube
       uses: sonarsource/sonarqube-scan-action@master
       with:
        projectBaseDir: sonarqube-github-action
        args: >
-          -Dsonar.projectKey=ast.yogest
+          -Dsonar.projectKey=ast.yogesh
           -Dsonar.projectName=AST-YOGESH
           -Dsonar.verbose=true
           -Dsonar.sources=.
