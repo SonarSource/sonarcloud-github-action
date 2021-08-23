@@ -8,8 +8,7 @@ if [[ -z "${SONAR_TOKEN}" ]]; then
 fi
 
 if [[ -f "pom.xml" ]]; then
-  echo "Maven project detected. You should run the goal 'org.sonarsource.scanner.maven:sonar' during build rather than using this GitHub Action."
-  exit 1
+  echo "WARN: Maven project detected. You should run the goal 'org.sonarsource.scanner.maven:sonar' during build rather than using this GitHub Action."
 fi
 
 if [[ -f "build.gradle" ]]; then
