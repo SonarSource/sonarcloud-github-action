@@ -79,6 +79,9 @@ In case you need to add additional analysis parameters, you can use the `args` o
 More information about possible analysis parameters is found in the documentation at:
 https://sonarcloud.io/documentation/analysis/analysis-parameters/
 
+See also example configurations at:
+https://github.com/sonarsource/sonarcloud-github-action-samples/
+
 ### Secrets
 
 - `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
