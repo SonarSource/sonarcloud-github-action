@@ -77,7 +77,7 @@ In case you need to add additional analysis parameters, you can use the `args` o
 ```
 
 More information about possible analysis parameters is found in the documentation at:
-https://sonarcloud.io/documentation/analysis/analysis-parameters/
+https://docs.sonarcloud.io/advanced-setup/analysis-parameters
 
 See also example configurations at:
 https://github.com/sonarsource/sonarcloud-github-action-samples/
