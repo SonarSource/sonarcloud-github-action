@@ -22,6 +22,8 @@ WORKDIR /opt
 # https://help.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user
 USER root
 
+RUN ln -s $SONAR_SCANNER_HOME/bin/sonar-scanner /usr/local/bin/sonar-scanner
+
 # Prepare entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
