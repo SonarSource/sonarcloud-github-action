@@ -96,8 +96,8 @@ https://github.com/sonarsource/sonarcloud-github-action-samples/
 * Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build
 * Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
 * You want to analyze a .NET solution: Follow our interactive tutorial for Github Actions after importing your project directly in SonarCloud
-* You want to analyze C/C++ code: rely on our [Travis-CI extension](https://docs.travis-ci.com/user/sonarcloud/) and look at [our sample C/C++ project](https://github.com/SonarSource/sq-com_example_c-sqscanner-travis)
-* You want to analyze C/C++/Objective-C code on `windows-latest`: see [this guide](https://community.sonarsource.com/t/sonarcloud-with-msbuild-build-wrapper-on-github-actions/35607) contributed on our community forum
+* You want to analyze C or C++ code: rely on our [Travis-CI extension](https://docs.travis-ci.com/user/sonarcloud/) and look at [our sample projects](https://github.com/orgs/sonarsource-cfamily-examples/repositories?language=&q=-sc&type=all)
+* You want to analyze C, C++, or Objective-C code on `windows-latest`: see [this guide](https://community.sonarsource.com/t/sonarcloud-with-msbuild-build-wrapper-on-github-actions/35607) contributed on our community forum
 
 ## Have question or feedback?
 
