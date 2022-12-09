@@ -3,7 +3,9 @@ name: Build and publish to ghcr.io
 on:
   push:
     branches: [ master ]
-
+  release:
+    types: [published]
+    
 env:
   IMAGE_NAME: sonarcloud-github-action
 
