@@ -16,3 +16,7 @@ inputs:
     description: Set the sonar.projectBaseDir analysis property
     required: false
     default: .
+  ignoreMaven:
+    description: Skip throwing error if a maven project is detected
+    required: false
+    default: "false"
