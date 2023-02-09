@@ -50,7 +50,6 @@ jobs:
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@<action version> # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
