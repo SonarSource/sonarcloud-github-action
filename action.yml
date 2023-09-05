@@ -1,7 +1,7 @@
 name: SonarCloud Scan
 description: >
   Scan your code with SonarCloud to detect bugs, vulnerabilities and code smells
-  in more than 25 programming languages.
+  in 26+ programming languages.
 branding:
   icon: check
   color: green

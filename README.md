@@ -1,15 +1,15 @@
-# Scan your code with SonarCloud
+# Analyze your code for free with SonarCloud
 
-Using this GitHub Action, scan your code with [SonarCloud](https://sonarcloud.io/) to detects bugs, vulnerabilities and code smells in more than 20 programming languages!
+Using this GitHub Action, scan your code with [SonarCloud](https://sonarcloud.io/) to detects bugs, vulnerabilities and code smells in 26+ programming languages!
 In case you want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
 
 <img src="./images/SonarCloud-72px.png">
 
-SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, [C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and many more. If your code is closed source, SonarCloud also offers a paid plan to run private analyses.
+SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, [C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and many more. If your code is closed source, SonarCloud also offers a free, no-commitment 14-day trial to run private analyses. Start your free trial here: [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/). With SonarCloud, you also get IDE Support with [SonarLint](https://www.sonarsource.com/products/sonarlint/) integration to find code issues on the fly. SonarCloud rules and analysis settings synchronize to [SonarLint](https://www.sonarsource.com/products/sonarlint/), aligning teams around a single standard of Clean Code.
 
 ## Requirements
 
-* Have an account on SonarCloud. [Sign up for free now](https://sonarcloud.io/sessions/init/github) if it's not already the case!
+* Create your account on SonarCloud. Sign up for free now if it's not already the case! [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/)
 * The repository to analyze is set up on SonarCloud. [Set it up](https://sonarcloud.io/projects/create) in just one click.
 
 ## Usage
@@ -92,6 +92,8 @@ https://github.com/sonarsource/sonarcloud-github-action-samples/
 
 <img src="./images/SonarCloud-analysis-in-Checks.png">
 
+Want to see more examples of SonarCloud in action? You can [explore current Open Source projects in SonarCloud](https://sonarcloud.io/explore/projects?sort=-analysis_date) that are using the Clean as You Code methodology.
+
 ## Do not use this GitHub action if you are in the following situations
 
 * Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build
@@ -108,5 +110,3 @@ To provide feedback (requesting a feature or reporting a bug) please post on the
 The Dockerfile and associated scripts and documentation in this project are released under the LGPLv3 License.
 
 Container images built with this project include third party materials.
-
-[![Build Status](https://travis-ci.com/SonarSource/sonarcloud-github-action.svg?branch=master)](https://travis-ci.com/SonarSource/sonarcloud-github-action)
