@@ -5,7 +5,7 @@ In case you want to analyze C and C++ code: rely on our [SonarCloud Scan for C a
 
 <img src="./images/SonarCloud-72px.png">
 
-SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, [C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and many more. If your code is closed source, SonarCloud also offers a free, no-commitment 14-day trial to run private analyses. Start your free trial here: [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x). With SonarCloud, you also get IDE Support with [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x) integration to find code issues on the fly. SonarCloud rules and analysis settings synchronize to [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x), aligning teams around a single standard of Clean Code.
+SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, [C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c), and many more. If your code is closed source, SonarCloud also offers a free, no-commitment 14-day trial to run private analyses. Start your free trial here: [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x). With SonarCloud, you also get IDE Support with [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x) integration to find code issues on the fly. SonarCloud rules and analysis settings synchronize to [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x), aligning teams around a single standard of [Clean Code](https://www.sonarsource.com/solutions/clean-code/).
 
 ## Requirements
 
@@ -14,7 +14,7 @@ SonarCloud is the leading product for Continuous Code Quality & Code Security on
 
 ## Usage
 
-Project metadata, including the location to the sources to be analyzed, must be declared in the file `sonar-project.properties` in the base directory:
+Project metadata, including the location of the sources to be analyzed, must be declared in the file `sonar-project.properties` in the base directory:
 
 ```properties
 sonar.organization=<replace with your SonarCloud organization key>
@@ -98,10 +98,10 @@ Want to see more examples of SonarCloud in action? You can [explore current Open
 
 * Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build
 * Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
-* You want to analyze a .NET solution: Follow our interactive tutorial for Github Actions after importing your project directly in SonarCloud
+* You want to analyze a .NET solution: Follow our interactive tutorial for GitHub Actions after importing your project directly into SonarCloud
 * You want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
 
-## Have question or feedback?
+## Have questions or feedback?
 
 To provide feedback (requesting a feature or reporting a bug) please post on the [SonarSource Community Forum](https://community.sonarsource.com/) with the tag `sonarcloud`.
 
@@ -109,4 +109,4 @@ To provide feedback (requesting a feature or reporting a bug) please post on the
 
 The Dockerfile and associated scripts and documentation in this project are released under the LGPLv3 License.
 
-Container images built with this project include third party materials.
+Container images built with this project include third-party materials.
