@@ -8,6 +8,8 @@ branding:
 runs:
   using: docker
   image: Dockerfile
+  entrypoint: "/entrypoint.sh"
+  post-entrypoint: "/cleanup.sh"
 inputs:
   args:
     description: Additional arguments to the sonarcloud scanner
