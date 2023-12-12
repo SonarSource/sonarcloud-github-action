@@ -88,6 +88,19 @@ https://github.com/sonarsource/sonarcloud-github-action-samples/
 - `SONAR_TOKEN` – **Required** this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page in SonarCloud](https://sonarcloud.io/account/security/). You can set the `SONAR_TOKEN` environment variable in the "Secrets" settings page of your repository.
 - *`GITHUB_TOKEN` – Provided by Github (see [Authenticating with the GITHUB_TOKEN](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token)).*
 
+## Error cleaning up workspace
+
+In some cases, the checkout action may fail to clean up the workspace. This is a known problem for GitHub actions implemented as a docker container (such as `sonarcloud-github-actions`) when self-hosted runners are used. 
+Example of the error message: `File was unable to be removed Error: EACCES: permission denied, unlink '/actions-runner/_work//project/.scannerwork/.sonar_lock'`
+To work around the problem, `sonarcloud-github-action` attempts to fix the permission of the temporary files that it creates. If that doesn't work, you can manually clean up the workspace by running the following action:
+```
+- name: Clean the workspace
+  uses: docker://alpine
+  with:
+    args: /bin/sh -c "find \"${GITHUB_WORKSPACE}\" -mindepth 1 ! -name . -prune -exec rm -rf {} +"
+```
+You can find more info [here](https://github.com/actions/runner/issues/434).
+
 ## Example of pull request analysis
 
 <img src="./images/SonarCloud-analysis-in-Checks.png">
