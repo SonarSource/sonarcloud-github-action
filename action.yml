@@ -25,11 +25,17 @@ runs:
       shell: bash
       run: docker image load --input ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
 
-    - uses: docker
-      with:
-        image: Dockerfile
-        entrypoint: "/entrypoint.sh"
-        post-entrypoint: "/cleanup.sh"
+    - name: Build docker image
+      shell: bash
+      run: |
+        docker build \
+        --tag sonarcloud:latest \
+        --file Dockerfile
+
+    - name: Run sonarcloud scanner
+      shell: bash
+      run: |
+        docker run --rm sonarcloud:latest /entrypoint.sh
 
 inputs:
   args:
