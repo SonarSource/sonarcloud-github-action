@@ -18,7 +18,7 @@ runs:
     - name: Update sonarcloud Image Cache if cache miss
       if: steps.cache-docker-sonarcloud.outputs.cache-hit != 'true'
       shell: bash
-      run: docker pull sonar-cloud:scanner-cli-5.0 && mkdir -p ci/cache/docker/sonarcloud && docker image save sonar-cloud:scanner-cli-5.0 --output ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
+      run: docker pull sonarsource/sonar-scanner-cli:5.0 && mkdir -p ci/cache/docker/sonarcloud && docker image save sonar-cloud:scanner-cli-5.0 --output ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
 
     - name: Use sonarcloud Image Cache if cache hit
       if: steps.cache-docker-sonarcloud.outputs.cache-hit == 'true'
