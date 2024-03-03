@@ -18,10 +18,9 @@ runs:
     - name: Update sonarcloud Image Cache if cache miss
       if: steps.cache-docker-sonarcloud.outputs.cache-hit != 'true'
       shell: bash
-      run: docker pull 885420015722.dkr.ecr.ap-southeast-1.amazonaws.com/sonar-cloud:scanner-cli-5.0 && \
+      run: docker pull sonarsource/sonar-scanner-cli:5.0 && \
         mkdir -p ci/cache/docker/sonarcloud && \
-        docker image save 885420015722.dkr.ecr.ap-southeast-1.amazonaws.com/sonar-cloud:scanner-cli-5.0 \
-        --output ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
+        docker image save sonarsource/sonar-scanner-cli:5.0 --output ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
 
     - name: Use sonarcloud Image Cache if cache hit
       if: steps.cache-docker-sonarcloud.outputs.cache-hit == 'true'
