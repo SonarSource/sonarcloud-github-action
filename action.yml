@@ -36,14 +36,19 @@ runs:
         --tag sonarcloud:latest \
         --file ${{github.action_path}}/Dockerfile ${{github.action_path}}
 
-    - name: Run sonarcloud scanner
-      shell: bash
-      run: |
-        docker run --rm \
-        -e INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \
-        -e INPUT_ARGS="${{inputs.args}}" \
-        -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
-        sonarcloud:latest 
+    - uses: docker://localhost/sonarcloud:latest
+      with:
+        entrypoint: "${{github.action_path}}/entrypoint.sh"
+        post-entrypoint: "${{github.action_path}}/cleanup.sh"
+
+#    - name: Run sonarcloud scanner
+#      shell: bash
+#      run: |
+#        docker run --rm \
+#        -e INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \
+#        -e INPUT_ARGS="${{inputs.args}}" \
+#        -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
+#        sonarcloud:latest
 
 inputs:
   args:
