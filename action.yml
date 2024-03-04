@@ -45,6 +45,10 @@ runs:
         -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
         -e GITHUB_ACTIONS=true -e CI=true \
         -v ${{github.workspace}}:"/github/workspace" \
+        -v "/var/run/docker.sock":"/var/run/docker.sock" \
+        -v "/runner/_work/_temp/_github_home":"/github/home" \
+        -v "/runner/_work/_temp/_github_workflow":"/github/workflow" \
+        -v "/runner/_work/_temp/_runner_file_commands":"/github/file_commands" \
         sonarcloud:latest
 
 inputs:
