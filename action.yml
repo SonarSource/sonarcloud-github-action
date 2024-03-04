@@ -46,10 +46,10 @@ runs:
       shell: bash
       run: |
         docker run --rm \
-        --env INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \ 
-        --env INPUT_ARGS="${{inputs.args}}" \
-        --env SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
-        sonarcloud:latest
+        -e INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \
+        -e INPUT_ARGS="${{inputs.args}}" \
+        -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
+        sonarcloud:latest 
 
 inputs:
   args:
