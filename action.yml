@@ -19,7 +19,7 @@ runs:
       if: steps.cache-docker-sonarcloud.outputs.cache-hit != 'true'
       shell: bash
       run: docker pull 885420015722.dkr.ecr.ap-southeast-1.amazonaws.com/sonar-cloud:scanner-cli-5.0 && \
-        mkdir -p ci/cache/docker/sonarcloud && \
+        mkdir -p ./ci/cache/docker/sonarcloud && \
         docker image save 885420015722.dkr.ecr.ap-southeast-1.amazonaws.com/sonar-cloud:scanner-cli-5.0 \
         --output ./ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
 
