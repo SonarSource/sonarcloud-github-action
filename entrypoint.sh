@@ -2,7 +2,7 @@
 
 set -e
 
-ls
+ls -R .
 
 if [[ -z "${SONAR_TOKEN}" ]]; then
   echo "Set the SONAR_TOKEN env variable."
