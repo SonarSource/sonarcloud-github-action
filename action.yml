@@ -42,7 +42,6 @@ runs:
         docker run --workdir /github/workspace --rm \
         -e INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \
         -e INPUT_ARGS="${{inputs.args}}" \
-        -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
         -e "GITHUB_PASSWORD" \
         -e "AWS_DEFAULT_REGION" -e "AWS_REGION" -e "AWS_ACCESS_KEY_ID" -e "AWS_SECRET_ACCESS_KEY" -e "AWS_SESSION_TOKEN" \
         -e "AWS_CLI_VERSION" -e "AWS_CLI_ARCH" -e "VERBOSE" -e "LIGHTSAILCTL" -e "BINDIR" -e "INSTALLROOTDIR" -e "ROOTDIR" \
