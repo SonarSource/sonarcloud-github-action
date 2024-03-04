@@ -29,14 +29,18 @@ runs:
 #      shell: bash
 #      run: docker image load --input ~/ci/cache/docker/sonarcloud/scanner-cli-5.0.tar
 
-    - uses: actions/checkout@v2
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
 
     - name: Build docker image
       shell: bash
       run: |
         docker build \
         --tag sonarcloud:latest \
-        --file Dockerfile .
+        --file ${{github.action_path}}/Dockerfile .
 
     - name: Run sonarcloud scanner
       shell: bash
