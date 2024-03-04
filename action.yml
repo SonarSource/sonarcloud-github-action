@@ -43,13 +43,25 @@ runs:
         -e INPUT_PROJECTBASEDIR="${{inputs.projectBaseDir}}" \
         -e INPUT_ARGS="${{inputs.args}}" \
         -e SONAR_TOKEN="${{env.SONAR_TOKEN}}" \
-        -e GITHUB_ACTIONS=true -e CI=true \
-        -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_WORKSPACE" -e "GITHUB_EVENT_PATH" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ACTION" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" \
-        -v ${{github.workspace}}:"/github/workspace" \
+        -e "AWS_DEFAULT_REGION" -e "AWS_REGION" -e "AWS_ACCESS_KEY_ID" -e "AWS_SECRET_ACCESS_KEY" -e "AWS_SESSION_TOKEN" \
+        -e "AWS_CLI_VERSION" -e "AWS_CLI_ARCH" -e "VERBOSE" -e "LIGHTSAILCTL" -e "BINDIR" -e "INSTALLROOTDIR" -e "ROOTDIR" \
+        -e "WORKDIR" -e "GITHUB_TOKEN" -e "SONAR_TOKEN" -e "INPUT_ARGS" -e "INPUT_PROJECTBASEDIR" -e "HOME" -e "GITHUB_JOB" \
+        -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" \
+        -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_REPOSITORY_ID" \
+        -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" \
+        -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" \
+        -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" \
+        -e "GITHUB_WORKSPACE" -e "GITHUB_EVENT_PATH" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" \
+        -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ACTION" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" \
+        -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" \
+        -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" \
+        -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true \
+        -e CI=true --entrypoint "/entrypoint.sh" \
         -v "/var/run/docker.sock":"/var/run/docker.sock" \
         -v "/runner/_work/_temp/_github_home":"/github/home" \
         -v "/runner/_work/_temp/_github_workflow":"/github/workflow" \
-        -v "/runner/_work/_temp/_runner_file_commands":"/github/file_commands" \
+        -v "/runner/_work/_temp/_runner_file_commands":"/github/file_commands"
+        -v ${{github.workspace}}:"/github/workspace" \
         sonarcloud:latest
 
 inputs:
