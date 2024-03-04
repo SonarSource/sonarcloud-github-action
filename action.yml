@@ -33,7 +33,7 @@ runs:
       run: |
         docker build \
         --tag sonarcloud:latest \
-        --file Dockerfile
+        --file Dockerfile .
 
     - name: Run sonarcloud scanner
       shell: bash
