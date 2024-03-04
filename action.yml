@@ -40,12 +40,12 @@ runs:
       run: |
         docker build \
         --tag sonarcloud:latest \
-        --file ${{github.action_path}}/Dockerfile .
+        --file ${{github.action_path}}/Dockerfile ${{github.action_path}}
 
     - name: Run sonarcloud scanner
       shell: bash
       run: |
-        docker run --rm sonarcloud:latest /entrypoint.sh
+        docker run --rm sonarcloud:latest --env INPUT_PROJECTBASEDIR=${{inputs.projectBaseDir}} --env INPUT_ARGS=${{inputs.args}}
 
 inputs:
   args:
