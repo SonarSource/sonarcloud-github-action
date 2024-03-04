@@ -60,7 +60,7 @@ runs:
         -v "/var/run/docker.sock":"/var/run/docker.sock" \
         -v "/runner/_work/_temp/_github_home":"/github/home" \
         -v "/runner/_work/_temp/_github_workflow":"/github/workflow" \
-        -v "/runner/_work/_temp/_runner_file_commands":"/github/file_commands"
+        -v "/runner/_work/_temp/_runner_file_commands":"/github/file_commands" \
         -v ${{github.workspace}}:"/github/workspace" \
         sonarcloud:latest
 
