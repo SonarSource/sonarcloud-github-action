@@ -45,7 +45,10 @@ runs:
     - name: Run sonarcloud scanner
       shell: bash
       run: |
-        docker run --rm sonarcloud:latest --env INPUT_PROJECTBASEDIR=${{inputs.projectBaseDir}} --env INPUT_ARGS=${{inputs.args}}
+        docker run --rm sonarcloud:latest \
+        --env INPUT_PROJECTBASEDIR=${{inputs.projectBaseDir}} \ 
+        --env INPUT_ARGS=${{inputs.args}} \
+        --env SONAR_TOKEN=${{env.SONAR_TOKEN}}
 
 inputs:
   args:
