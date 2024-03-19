@@ -1,6 +1,6 @@
 # Analyze your code for free with SonarCloud
 
-This SonarSource project, available as a GitHub Action, scans your C, C++, and Objective-C projects with SonarCloud, and helps developers produce 
+This SonarSource project, available as a GitHub Action, scans your projects with SonarCloud, and helps developers produce 
 [Clean Code](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=github&utm_campaign=clean-code&utm_content=sonarqube-scan-action).
 
 <img src="./images/SonarCloud-72px.png">
