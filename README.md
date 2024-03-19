@@ -1,11 +1,13 @@
 # Analyze your code for free with SonarCloud
 
-Using this GitHub Action, scan your code with [SonarCloud](https://www.sonarsource.com/products/sonarcloud/?utm_medium=referral&utm_source=github&utm_campaign=sc-product&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x) to detects bugs, vulnerabilities and code smells in 26+ programming languages!
-In case you want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
+This SonarSource project, available as a GitHub Action, scans your projects with SonarCloud, and helps developers produce 
+[Clean Code](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=github&utm_campaign=clean-code&utm_content=sonarqube-scan-action).
 
 <img src="./images/SonarCloud-72px.png">
 
-SonarCloud is the leading product for Continuous Code Quality & Code Security online, totally free for open-source projects. It supports all major programming languages, including Java, JavaScript, TypeScript, C#, [C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c), and many more. If your code is closed source, SonarCloud also offers a free, no-commitment 14-day trial to run private analyses. Start your free trial here: [SonarCloud Sign up](https://www.sonarsource.com/products/sonarcloud/signup/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x). With SonarCloud, you also get IDE Support with [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x) integration to find code issues on the fly. SonarCloud rules and analysis settings synchronize to [SonarLint](https://www.sonarsource.com/products/sonarlint/?utm_medium=referral&utm_source=github&utm_campaign=sc-signup&utm_content=signup-sonarcloud-listing-x-x&utm_term=ww-psp-x), aligning teams around a single standard of [Clean Code](https://www.sonarsource.com/solutions/clean-code/).
+[SonarCloud](https://www.sonarsource.com/products/sonarcloud/) is a widely used static analysis solution for continuous code quality and security inspection. 
+It helps developers identify and fix issues in their code that could lead to bugs, vulnerabilities, or decreased development velocity.
+SonarCloud supports the most popular programming languages, including Java, JavaScript, TypeScript, C#, Python, C, C++, and [many more](https://www.sonarsource.com/knowledge/languages/).
 
 ## Requirements
 
