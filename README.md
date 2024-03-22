@@ -111,7 +111,7 @@ Want to see more examples of SonarCloud in action? You can [explore current Open
 
 ## Do not use this GitHub action if you are in the following situations
 
-* Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build
+* Your code is built with Maven: run 'org.sonarsource.scanner.maven:sonar' during the build (if you realy want to run this action set the ignoreMaven input to `true`)
 * Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
 * You want to analyze a .NET solution: Follow our interactive tutorial for GitHub Actions after importing your project directly into SonarCloud
 * You want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
