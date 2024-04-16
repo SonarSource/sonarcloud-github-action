@@ -19,10 +19,11 @@ ENV LC_ALL="C.UTF-8"
 
 WORKDIR /opt
 
+USER root
+
 # Prepare entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 COPY cleanup.sh /cleanup.sh
 RUN chmod +x /cleanup.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
