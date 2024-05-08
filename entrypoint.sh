@@ -12,7 +12,7 @@ if [[ -f "${INPUT_PROJECTBASEDIR%/}/pom.xml" ]]; then
   exit 1
 fi
 
-if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle" ]]; then
+if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle" || -f "${INPUT_PROJECTBASEDIR%/}/build.gradle.kts" ]]; then
   echo "Gradle project detected. You should use the SonarQube plugin for Gradle during build rather than using this GitHub Action."
   exit 1
 fi
