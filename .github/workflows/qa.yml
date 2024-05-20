@@ -63,9 +63,9 @@ jobs:
         run: |
           echo "Expected previous step to fail"
           exit 1
-  failFastGradleTest:
+  dontFailGradleTest:
     name: >
-      Fail fast on Gradle project
+      Don't fail on Gradle project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -79,14 +79,13 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/gradle-project
-      - name: Previous should have failed
-        if: ${{ steps.runTest.outcome == 'success'}}
+          args: -Dsonar.scanner.dumpToFile=./output.properties
+      - name: Assert
         run: |
-          echo "Expected previous step to fail"
-          exit 1
-  failFastGradleKotlinTest:
+          ./test/assertFileExists ./output.properties
+  dontFailGradleKotlinTest:
     name: >
-      Fail fast on Kotlin Gradle project
+      Don't fail on Kotlin Gradle project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -100,14 +99,13 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/gradle-project-kotlin
-      - name: Previous should have failed
-        if: ${{ steps.runTest.outcome == 'success'}}
+          args: -Dsonar.scanner.dumpToFile=./output.properties
+      - name: Assert
         run: |
-          echo "Expected previous step to fail"
-          exit 1
-  failFastMavenTest:
+          ./test/assertFileExists ./output.properties
+  dontFailMavenTest:
     name: >
-      Fail fast on Maven project
+      Don't fail on Maven project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -121,11 +119,10 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/maven-project
-      - name: Previous should have failed
-        if: ${{ steps.runTest.outcome == 'success'}}
+          args: -Dsonar.scanner.dumpToFile=./output.properties
+      - name: Assert
         run: |
-          echo "Expected previous step to fail"
-          exit 1
+          ./test/assertFileExists ./output.properties
   runnerDebugUsedTest:
     name: >
       'RUNNER_DEBUG' is used
@@ -144,3 +141,4 @@ jobs:
       - name: Assert
         run: |
           ./test/assertFileContains ./output.properties "sonar.verbose=true"
+
