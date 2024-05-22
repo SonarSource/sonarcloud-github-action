@@ -126,3 +126,21 @@ jobs:
         run: |
           echo "Expected previous step to fail"
           exit 1
+  runnerDebugUsedTest:
+    name: >
+      'RUNNER_DEBUG' is used
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run action with debug mode
+        uses: ./
+        with:
+          args: -Dsonar.scanner.dumpToFile=./output.properties
+        env:
+          RUNNER_DEBUG: 1
+          SONAR_TOKEN: FAKE_TOKEN
+      - name: Assert
+        run: |
+          ./test/assertFileContains ./output.properties "sonar.verbose=true"
