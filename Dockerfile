@@ -1,6 +1,6 @@
-FROM sonarsource/sonar-scanner-cli:5.0
+FROM sonarsource/sonar-scanner-cli:10.0
 
-LABEL version="0.0.1" \
+LABEL version="2.2.0" \
       repository="https://github.com/sonarsource/sonarcloud-github-action" \
       homepage="https://github.com/sonarsource/sonarcloud-github-action" \
       maintainer="SonarSource" \
@@ -19,9 +19,14 @@ ENV LC_ALL="C.UTF-8"
 
 WORKDIR /opt
 
+# GitHub actions should be run under ROOT
+# https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#docker-container-filesystem
+USER 0
+
 # Prepare entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 COPY cleanup.sh /cleanup.sh
 RUN chmod +x /cleanup.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
