@@ -48,7 +48,7 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
+      uses: sonarsource/sonarcloud-github-action@<action version> # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
 You can change the analysis base directory by using the optional input `projectBaseDir` like this:
 
 ```yaml
-uses: sonarsource/sonarcloud-github-action@master
+uses: sonarsource/sonarcloud-github-action@<action version> # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
 with:
   projectBaseDir: my-custom-directory
 ```
@@ -66,7 +66,7 @@ In case you need to add additional analysis parameters, you can use the `args` o
 
 ```yaml
 - name: Analyze with SonarCloud
-  uses: sonarsource/sonarcloud-github-action@master
+  uses: sonarsource/sonarcloud-github-action@<action version> # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
   with:
     projectBaseDir: my-custom-directory
     args: >
