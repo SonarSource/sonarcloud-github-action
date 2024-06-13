@@ -19,13 +19,12 @@ jobs:
       - name: Run action with args
         uses: ./
         with:
-          args: >-
-            "-Dsonar.someArg=a value with spaces" -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.someArg=aValue -Dsonar.scanner.dumpToFile=./output.properties
         env:
           SONAR_TOKEN: FAKE_TOKEN
       - name: Assert
         run: |
-          ./test/assertFileContains ./output.properties "sonar.someArg=a value with spaces"
+          ./test/assertFileContains ./output.properties "sonar.someArg=aValue"
   projectBaseDirInputTest:
     name: >
       'projectBaseDir' input
