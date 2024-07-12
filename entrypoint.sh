@@ -21,10 +21,10 @@ if [[ -z "${SONARCLOUD_URL}" ]]; then
   SONARCLOUD_URL="https://sonarcloud.io"
 fi
 
-debug_flag=''
-if [[ "$RUNNER_DEBUG" == '1' ]]; then
-  debug_flag=' --debug '
-fi
+
+debug=""
+[[ "$RUNNER_DEBUG" == '1' ]] && debug="yes"
 
 unset JAVA_HOME
-sonar-scanner "$debug_flag" -Dsonar.projectBaseDir="${INPUT_PROJECTBASEDIR}" -Dsonar.host.url="${SONARCLOUD_URL}" "${INPUT_ARGS}"
+
+sonar-scanner ${debug:+"--debug"} -Dsonar.projectBaseDir="${INPUT_PROJECTBASEDIR}" -Dsonar.host.url="${SONARCLOUD_URL}" "${INPUT_ARGS}"
