@@ -12,7 +12,6 @@ jobs:
     name: >
       'args' input
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,7 +29,6 @@ jobs:
     name: >
       'projectBaseDir' input
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,7 +49,6 @@ jobs:
     name: >
       'SONAR_TOKEN' env var required
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,7 +67,6 @@ jobs:
     name: >
       Don't fail on Gradle project
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -91,7 +87,6 @@ jobs:
     name: >
       Don't fail on Kotlin Gradle project
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -112,7 +107,6 @@ jobs:
     name: >
       Don't fail on Maven project
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -133,7 +127,6 @@ jobs:
     name: >
       'RUNNER_DEBUG' is used
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - uses: actions/checkout@v4
         with:
