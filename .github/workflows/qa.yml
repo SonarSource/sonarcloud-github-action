@@ -1,4 +1,5 @@
 name: QA
+permissions: {}
 
 on:
   push:
