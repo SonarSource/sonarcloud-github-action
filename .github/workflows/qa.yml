@@ -19,7 +19,7 @@ jobs:
       - name: Run action with args
         uses: ./
         with:
-          args: -Dsonar.someArg=aValue -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.someArg=aValue -Dsonar.scanner.internal.dumpToFile=./output.properties
         env:
           SONAR_TOKEN: FAKE_TOKEN
       - name: Assert
@@ -38,7 +38,7 @@ jobs:
       - name: Run action with projectBaseDir
         uses: ./
         with:
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
           projectBaseDir: ./baseDir
         env:
           SONAR_TOKEN: FAKE_TOKEN
@@ -56,7 +56,7 @@ jobs:
       - name: Run action without SONAR_TOKEN
         uses: ./
         with:
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
         continue-on-error: true
       - name: Previous should have failed
         if: ${{ steps.runTest.outcome == 'success'}}
@@ -79,7 +79,7 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/gradle-project
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
       - name: Assert
         run: |
           ./test/assertFileExists ./output.properties
@@ -99,7 +99,7 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/gradle-project-kotlin
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
       - name: Assert
         run: |
           ./test/assertFileExists ./output.properties
@@ -119,7 +119,7 @@ jobs:
           SONAR_TOKEN: FAKE_TOKEN
         with:
           projectBaseDir: ./test/maven-project
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
       - name: Assert
         run: |
           ./test/assertFileExists ./output.properties
@@ -134,7 +134,7 @@ jobs:
       - name: Run action with debug mode
         uses: ./
         with:
-          args: -Dsonar.scanner.dumpToFile=./output.properties
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
         env:
           RUNNER_DEBUG: 1
           SONAR_TOKEN: FAKE_TOKEN
