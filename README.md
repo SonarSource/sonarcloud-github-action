@@ -114,6 +114,7 @@ Want to see more examples of SonarCloud in action? You can [explore current Open
 * Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
 * You want to analyze a .NET solution: Follow our interactive tutorial for GitHub Actions after importing your project directly into SonarCloud
 * You want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
+* You want to analyze Dart code: use [SonarScanner CLI](https://docs.sonarsource.com/sonarcloud/advanced-setup/ci-based-analysis/sonarscanner-cli/) during the build
 
 ## Have questions or feedback?
 
