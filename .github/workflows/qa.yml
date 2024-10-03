@@ -141,4 +141,22 @@ jobs:
       - name: Assert
         run: |
           ./test/assertFileContains ./output.properties "sonar.verbose=true"
-
+  overrideSonarcloudUrlTest:
+    name: >
+      'SONARCLOUD_URL' is used
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run action with SONARCLOUD_URL
+        uses: ./
+        with:
+          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
+        env:
+          SONARCLOUD_URL: mirror.sonarcloud.io
+          SONAR_TOKEN: FAKE_TOKEN
+      - name: Assert
+        run: |
+          ./test/assertFileContains ./output.properties "sonar.host.url=mirror.sonarcloud.io"
+          ./test/assertFileContains ./output.properties "sonar.scanner.sonarcloudUrl=mirror.sonarcloud.io"

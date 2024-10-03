@@ -1,10 +1,13 @@
 #!/bin/bash
 
+set -eo pipefail
+
 error() { echo -e "\\e[31m✗ $*\\e[0m"; }
 
-assertFileExists $1
+. ${BASH_SOURCE%/*}/assertFileExists $1
 
 if ! grep -q $2 $1; then
   error "'$2' not found in '$1'"
+  cat $1
   exit 1
 fi

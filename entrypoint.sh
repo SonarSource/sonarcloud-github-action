@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+set -eo pipefail
+
+declare -a args=()
 
 if [[ -z "${SONAR_TOKEN}" ]]; then
   echo "Set the SONAR_TOKEN env variable."
@@ -17,14 +19,16 @@ if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle" || -f "${INPUT_PROJECTBASEDIR%
   to get more accurate results."
 fi
 
-if [[ -z "${SONARCLOUD_URL}" ]]; then
-  SONARCLOUD_URL="https://sonarcloud.io"
+if [[ ${SONARCLOUD_URL} ]]; then
+  args+=("-Dsonar.scanner.sonarcloudUrl=${SONARCLOUD_URL}")
 fi
 
-debug_flag=''
 if [[ "$RUNNER_DEBUG" == '1' ]]; then
-  debug_flag=' --debug '
+  args+=("--debug")
 fi
 
 unset JAVA_HOME
-sonar-scanner $debug_flag -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} -Dsonar.host.url=${SONARCLOUD_URL} ${INPUT_ARGS}
+
+args+=("-Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR}")
+
+sonar-scanner "${args[@]}" ${INPUT_ARGS}

@@ -1,6 +1,6 @@
-FROM sonarsource/sonar-scanner-cli:11.0
+FROM sonarsource/sonar-scanner-cli:11.1
 
-LABEL version="3.0.0" \
+LABEL version="3.1.0" \
       repository="https://github.com/sonarsource/sonarcloud-github-action" \
       homepage="https://github.com/sonarsource/sonarcloud-github-action" \
       maintainer="SonarSource" \
