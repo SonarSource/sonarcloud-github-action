@@ -1,20 +1,38 @@
 name: SonarCloud Scan
 description: >
-  Scan your code with SonarCloud to detect bugs, vulnerabilities and code smells
-  in 26+ programming languages.
+  Scan your code with SonarQube Cloud to detect coding issues in 30+ 
+  languages, frameworks, and IaC platforms. 
+  The solution also provides fix recommendations leveraging AI with 
+  Sonar's AI CodeFix capability. (Formerly SonarCloud)
 branding:
   icon: check
   color: green
-runs:
-  using: docker
-  image: Dockerfile
-  entrypoint: "/entrypoint.sh"
-  post-entrypoint: "/cleanup.sh"
 inputs:
   args:
-    description: Additional arguments to the sonarcloud scanner
+    description: Additional arguments to the Sonar Scanner CLI
     required: false
   projectBaseDir:
     description: Set the sonar.projectBaseDir analysis property
     required: false
-    default: .
+  scannerVersion:
+    description: Version of the Sonar Scanner CLI to use
+    required: false
+    default: 6.2.1.4610
+  scannerBinariesUrl:
+    description: URL to download the Sonar Scanner CLI binaries from
+    required: false
+    default: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli
+runs:
+  using: "composite"
+  steps:
+    - name: Deprecation warning
+      shell: bash
+      run: |
+        echo "::warning title=SonarScanner::This action is deprecated and will be removed in a future release. Please use the sonarqube-scan-action action instead. The sonarqube-scan-action is a drop-in replacement for this action."
+    - name: SonarQube Cloud Scan
+      uses: SonarSource/sonarqube-scan-action@v4.1.0
+      with:
+        args: ${{ inputs.args }}
+        projectBaseDir: ${{ inputs.projectBaseDir }}
+        scannerVersion: ${{ inputs.scannerVersion }}
+        scannerBinariesUrl: ${{ inputs.scannerBinariesUrl }}

@@ -81,6 +81,14 @@ In case you need to add additional analysis parameters, you can use the `args` o
 More information about possible analysis parameters is found in the documentation at:
 https://docs.sonarcloud.io/advanced-setup/analysis-parameters
 
+In case you need to specify the version of the Sonar Scanner, you can use the `scannerVersion` option:
+
+```yaml
+uses: sonarsource/sonarcloud-github-action@<action version> # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
+with:
+  scannerVersion: 6.2.0.4584
+```
+
 See also example configurations at:
 https://github.com/sonarsource/sonarcloud-github-action-samples/
 
@@ -114,14 +122,11 @@ Want to see more examples of SonarCloud in action? You can [explore current Open
 * Your code is built with Gradle: use the SonarQube plugin for Gradle during the build
 * You want to analyze a .NET solution: Follow our interactive tutorial for GitHub Actions after importing your project directly into SonarCloud
 * You want to analyze C and C++ code: rely on our [SonarCloud Scan for C and C++](https://github.com/marketplace/actions/sonarcloud-scan-for-c-and-c) and look at [our sample C and C++ project](https://github.com/sonarsource-cfamily-examples?q=gh-actions-sc&type=all&language=&sort=)
-* You want to analyze Dart code: use [SonarScanner CLI](https://docs.sonarsource.com/sonarcloud/advanced-setup/ci-based-analysis/sonarscanner-cli/) during the build
 
 ## Have questions or feedback?
 
 To provide feedback (requesting a feature or reporting a bug) please post on the [SonarSource Community Forum](https://community.sonarsource.com/) with the tag `sonarcloud`.
 
 ## License
-
-The Dockerfile and associated scripts and documentation in this project are released under the LGPLv3 License.
 
 Container images built with this project include third-party materials.

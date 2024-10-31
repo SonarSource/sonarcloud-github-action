@@ -11,7 +11,10 @@ jobs:
   argsInputTest:
     name: >
       'args' input
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,7 +31,10 @@ jobs:
   projectBaseDirInputTest:
     name: >
       'projectBaseDir' input
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,118 +51,51 @@ jobs:
       - name: Assert
         run: |
           ./test/assertFileContains ./output.properties "sonar.projectBaseDir=.*/baseDir"
-  sonarTokenRequiredTest:
+  scannerVersionTest:
     name: >
-      'SONAR_TOKEN' env var required
-    runs-on: ubuntu-latest
+      'scannerVersion' input
+    runs-on: ubuntu-latest # assumes default RUNNER_ARCH for linux is X64
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action without SONAR_TOKEN
+      - name: Run action with scannerVersion
         uses: ./
         with:
+          scannerVersion: 6.1.0.4477
           args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-        continue-on-error: true
-      - name: Previous should have failed
-        if: ${{ steps.runTest.outcome == 'success'}}
+        env:
+          NO_CACHE: true # force install-sonar-scanner-cli.sh execution
+          SONAR_HOST_URL: http://not_actually_used
+          SONAR_SCANNER_JSON_PARAMS: '{"sonar.scanner.internal.dumpToFile": "./output.properties"}'
+      - name: Assert
         run: |
-          echo "Expected previous step to fail"
-          exit 1
-  dontFailGradleTest:
+          ./test/assertFileExists "$RUNNER_TEMP/sonarscanner/sonar-scanner-cli-6.1.0.4477-linux-x64.zip"
+  scannerBinariesUrlTest:
     name: >
-      Don't fail on Gradle project
-    runs-on: ubuntu-latest
+      'scannerBinariesUrl' input with invalid URL
+    runs-on: ubuntu-latest # assumes default RUNNER_ARCH for linux is X64
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action on Gradle project
+      - name: Run action with scannerBinariesUrl
         id: runTest
         uses: ./
         continue-on-error: true
+        with:
+          scannerVersion: 6.2.1.4610
+          scannerBinariesUrl: https://invalid_uri/Distribution/sonar-scanner-cli
         env:
-          SONAR_TOKEN: FAKE_TOKEN
-        with:
-          projectBaseDir: ./test/gradle-project
-          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-      - name: Assert
+          NO_CACHE: true # force install-sonar-scanner-cli.sh execution
+          SONAR_HOST_URL: http://not_actually_used
+          SONAR_SCANNER_JSON_PARAMS: '{"sonar.scanner.internal.dumpToFile": "./output.properties"}'
+      - name: Fail if action succeeded
+        if: steps.runTest.outcome == 'success'
+        run: exit 1
+      - name: Assert Sonar Scanner CLI was not downloaded
         run: |
-          ./test/assertFileExists ./output.properties
-  dontFailGradleKotlinTest:
-    name: >
-      Don't fail on Kotlin Gradle project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action on Kotlin Gradle project
-        id: runTest
-        uses: ./
-        continue-on-error: true
-        env:
-          SONAR_TOKEN: FAKE_TOKEN
-        with:
-          projectBaseDir: ./test/gradle-project-kotlin
-          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-      - name: Assert
+          ./test/assertFileDoesntExist "$RUNNER_TEMP/sonarscanner/sonar-scanner-cli-6.2.1.4610-linux-x64.zip"
+      - name: Assert Sonar Scanner CLI was not executed
         run: |
-          ./test/assertFileExists ./output.properties
-  dontFailMavenTest:
-    name: >
-      Don't fail on Maven project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action on Maven project
-        id: runTest
-        uses: ./
-        continue-on-error: true
-        env:
-          SONAR_TOKEN: FAKE_TOKEN
-        with:
-          projectBaseDir: ./test/maven-project
-          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-      - name: Assert
-        run: |
-          ./test/assertFileExists ./output.properties
-  runnerDebugUsedTest:
-    name: >
-      'RUNNER_DEBUG' is used
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action with debug mode
-        uses: ./
-        with:
-          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-        env:
-          RUNNER_DEBUG: 1
-          SONAR_TOKEN: FAKE_TOKEN
-      - name: Assert
-        run: |
-          ./test/assertFileContains ./output.properties "sonar.verbose=true"
-  overrideSonarcloudUrlTest:
-    name: >
-      'SONARCLOUD_URL' is used
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run action with SONARCLOUD_URL
-        uses: ./
-        with:
-          args: -Dsonar.scanner.internal.dumpToFile=./output.properties
-        env:
-          SONARCLOUD_URL: mirror.sonarcloud.io
-          SONAR_TOKEN: FAKE_TOKEN
-      - name: Assert
-        run: |
-          ./test/assertFileContains ./output.properties "sonar.host.url=mirror.sonarcloud.io"
-          ./test/assertFileContains ./output.properties "sonar.scanner.sonarcloudUrl=mirror.sonarcloud.io"
+          ./test/assertFileDoesntExist ./output.properties
