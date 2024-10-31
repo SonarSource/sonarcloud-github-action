@@ -1,0 +1,8 @@
+#!/bin/bash
+
+error() { echo -e "\\e[31m✗ $*\\e[0m"; }
+
+if [ -f $1 ]; then
+  error "File '$1' found"
+  exit 1
+fi
