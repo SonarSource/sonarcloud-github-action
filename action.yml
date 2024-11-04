@@ -10,6 +10,8 @@ runs:
   image: Dockerfile
   entrypoint: "/entrypoint.sh"
   post-entrypoint: "/cleanup.sh"
+  args:
+    CONTAINER_REGISTRY: ${{ inputs.containerRegistry }}
 inputs:
   args:
     description: Additional arguments to the sonarcloud scanner
@@ -18,3 +20,7 @@ inputs:
     description: Set the sonar.projectBaseDir analysis property
     required: false
     default: .
+  containerRegistry:
+    description: Set the container registry to pull the sonar scanner image
+    required: false
+    default: dockerhub.io

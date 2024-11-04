@@ -1,4 +1,5 @@
-FROM sonarsource/sonar-scanner-cli:11.1
+ARG CONTAINER_REGISTRY
+FROM ${CONTAINER_REGISTRY}/sonarsource/sonar-scanner-cli:11.1
 
 LABEL version="3.1.0" \
       repository="https://github.com/sonarsource/sonarcloud-github-action" \
