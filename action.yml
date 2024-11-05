@@ -14,7 +14,7 @@ inputs:
     required: false
     default: .
   containerRegistry:
-    description: Set the container registry to pull the sonar scanner image
+    description: Set the container registry to pull the sonar scanner image with trailing slash
     required: false
     default: ""
 
