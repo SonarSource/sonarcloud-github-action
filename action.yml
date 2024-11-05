@@ -42,6 +42,4 @@ runs:
 
         docker exec scanner /cleanup.sh
 
-        docker rmi -f scanner
-
       shell: bash
