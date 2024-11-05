@@ -23,4 +23,4 @@ inputs:
   containerRegistry:
     description: Set the container registry to pull the sonar scanner image
     required: false
-    default: dockerhub.io
+    default: dockerhub.io/
