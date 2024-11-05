@@ -26,19 +26,21 @@ runs:
       run: |
         cd "${{ github.action_path }}"
         docker build \
-          -t sonarcloud-scan-image \
+          -t sonarcloud_scan_image \
           --build-arg CONTAINER_REGISTRY=${{ inputs.containerRegistry }} \
           .
 
         cd "${{ github.workspace }}"
-        docker run --name scanner_container \
+        docker run --name scanner \
           --entrypoint "/entrypoint.sh" \
           -e SONAR_TOKEN="${{ env.SONAR_TOKEN }}" \
           -e INPUT_PROJECTBASEDIR="${{ inputs.projectBaseDir }}" \
           -e INPUT_ARGS="${{ inputs.args }}" \
           -v "${{ github.workspace }}":"/opt/${{ inputs.projectBaseDir }}" \
-          -i sonarcloud-scan-image
+          -i sonarcloud_scan_image
 
-        docker exec scanner_container /cleanup.sh
+        docker exec scanner /cleanup.sh
+
+        docker rmi -f scanner
 
       shell: bash
