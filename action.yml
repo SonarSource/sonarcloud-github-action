@@ -24,3 +24,28 @@ inputs:
     description: Set the container registry to pull the sonar scanner image
     required: false
     default: dockerhub.io/
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run SonarCloud Scan
+      run: |
+        cd "${{ github.action_path }}"
+        docker build \
+          -t sonarcloud-scan-image \
+          --build-arg CONTAINER_REGISTRY=${{ inputs.containerRegistry }} \
+          .
+
+        cd "${{ github.workspace }}"
+        docker run --name scanner_container \
+          --entrypoint "/entrypoint.sh" \
+          -e SONAR_TOKEN="${{ env.SONAR_TOKEN }}" \
+          -e INPUT_PROJECTBASEDIR="${{ inputs.projectBaseDir }}" \
+          -e INPUT_ARGS="${{ inputs.args }}" \
+          -v "${{ github.workspace }}":"/opt/${{ inputs.projectBaseDir }}" \
+          -i sonarcloud-scan-image
+
+        docker exec scanner_container /cleanup.sh
+
+      shell: bash
