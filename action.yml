@@ -40,6 +40,4 @@ runs:
           -v "${{ github.workspace }}":"/opt/${{ inputs.projectBaseDir }}" \
           -i sonarcloud_scan_image
 
-        docker exec scanner /cleanup.sh
-
       shell: bash
