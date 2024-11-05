@@ -34,6 +34,7 @@ runs:
         docker run --name scanner \
           --entrypoint "/entrypoint.sh" \
           -e SONAR_TOKEN="${{ env.SONAR_TOKEN }}" \
+          -e GITHUB_TOKEN="${{ env.GITHUB_TOKEN }}" \
           -e INPUT_PROJECTBASEDIR="${{ inputs.projectBaseDir }}" \
           -e INPUT_ARGS="${{ inputs.args }}" \
           -v "${{ github.workspace }}":"/opt/${{ inputs.projectBaseDir }}" \
