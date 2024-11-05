@@ -5,13 +5,6 @@ description: >
 branding:
   icon: check
   color: green
-runs:
-  using: docker
-  image: Dockerfile
-  entrypoint: "/entrypoint.sh"
-  post-entrypoint: "/cleanup.sh"
-  args:
-    CONTAINER_REGISTRY: ${{ inputs.containerRegistry }}
 inputs:
   args:
     description: Additional arguments to the sonarcloud scanner
