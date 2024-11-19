@@ -1,4 +1,4 @@
-name: SonarCloud Scan
+name: SonarQube Cloud Scan
 description: >
   Scan your code with SonarQube Cloud to detect coding issues in 30+ 
   languages, frameworks, and IaC platforms. 
