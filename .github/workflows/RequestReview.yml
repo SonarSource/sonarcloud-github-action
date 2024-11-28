@@ -8,8 +8,7 @@ jobs:
   RequestReview_job:
     name: Request review
     runs-on: ubuntu-latest
-    environment: jira
-    permissions:
+permissions:
       id-token: write
     # For external PR, ticket should be moved manually
     if: |
