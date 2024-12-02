@@ -1,4 +1,5 @@
-FROM sonarsource/sonar-scanner-cli:11.1
+ARG CONTAINER_REGISTRY
+FROM ${CONTAINER_REGISTRY}sonarsource/sonar-scanner-cli:11.1
 
 LABEL version="3.1.0" \
       repository="https://github.com/sonarsource/sonarcloud-github-action" \
@@ -26,7 +27,5 @@ USER 0
 # Prepare entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-COPY cleanup.sh /cleanup.sh
-RUN chmod +x /cleanup.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
