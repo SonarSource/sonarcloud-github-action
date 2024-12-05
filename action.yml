@@ -1,9 +1,7 @@
 name: SonarQube Cloud Scan
 description: >
   Scan your code with SonarQube Cloud to detect coding issues in 30+ 
-  languages, frameworks, and IaC platforms. 
-  The solution also provides fix recommendations leveraging AI with 
-  Sonar's AI CodeFix capability. (Formerly SonarCloud)
+  languages. (Formerly SonarCloud)
 branding:
   icon: check
   color: green
