@@ -2,8 +2,8 @@
 
 > [!WARNING]
 > This action is deprecated and will be removed in a future release. 
-> Please use the `sonarqube-scan-action` action instead. 
-> The `sonarqube-scan-action` is a drop-in replacement for this action.
+> Please use the `official-sonarqube-scan` action instead. 
+> The `official-sonarqube-scan` is a drop-in replacement for this action, you can find it [here](https://github.com/marketplace/actions/official-sonarqube-scan).
 
 This SonarSource project, available as a GitHub Action, scans your projects with SonarQube [Cloud](https://www.sonarsource.com/products/sonarcloud/).
 
