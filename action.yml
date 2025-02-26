@@ -15,7 +15,7 @@ inputs:
   scannerVersion:
     description: Version of the Sonar Scanner CLI to use
     required: false
-    default: 6.2.1.4610
+    default: 7.0.2.4839
   scannerBinariesUrl:
     description: URL to download the Sonar Scanner CLI binaries from
     required: false
