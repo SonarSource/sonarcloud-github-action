@@ -15,6 +15,7 @@ inputs:
   scannerVersion:
     description: Version of the Sonar Scanner CLI to use
     required: false
+    # to be kept in sync with the default version in the sonarqube-scan-action
     default: 7.0.2.4839
   scannerBinariesUrl:
     description: URL to download the Sonar Scanner CLI binaries from
