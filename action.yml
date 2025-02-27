@@ -15,7 +15,8 @@ inputs:
   scannerVersion:
     description: Version of the Sonar Scanner CLI to use
     required: false
-    default: 6.2.1.4610
+    # to be kept in sync with the default version in the sonarqube-scan-action
+    default: 7.0.2.4839
   scannerBinariesUrl:
     description: URL to download the Sonar Scanner CLI binaries from
     required: false
@@ -28,7 +29,7 @@ runs:
       run: |
         echo "::warning title=SonarScanner::This action is deprecated and will be removed in a future release. Please use the sonarqube-scan-action action instead. The sonarqube-scan-action is a drop-in replacement for this action."
     - name: SonarQube Cloud Scan
-      uses: SonarSource/sonarqube-scan-action@v4.1.0
+      uses: SonarSource/sonarqube-scan-action@v5.0.0
       with:
         args: ${{ inputs.args }}
         projectBaseDir: ${{ inputs.projectBaseDir }}
