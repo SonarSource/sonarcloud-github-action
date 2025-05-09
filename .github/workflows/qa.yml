@@ -54,7 +54,7 @@ jobs:
   scannerVersionTest:
     name: >
       'scannerVersion' input
-    runs-on: ubuntu-latest # assumes default RUNNER_ARCH for linux is X64
+    runs-on: ubuntu-latest-large # assumes default RUNNER_ARCH for linux is X64
     steps:
       - uses: actions/checkout@v4
         with:
@@ -74,7 +74,7 @@ jobs:
   scannerBinariesUrlTest:
     name: >
       'scannerBinariesUrl' input with invalid URL
-    runs-on: ubuntu-latest # assumes default RUNNER_ARCH for linux is X64
+    runs-on: ubuntu-latest-large # assumes default RUNNER_ARCH for linux is X64
     steps:
       - uses: actions/checkout@v4
         with:

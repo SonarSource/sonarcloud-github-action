@@ -7,7 +7,7 @@ on:
 jobs:
   PullRequestClosed_job:
     name: Pull Request Closed
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-large
     permissions:
       id-token: write
       pull-requests: read
