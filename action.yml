@@ -29,7 +29,7 @@ runs:
       run: |
         echo "::warning title=SonarScanner::This action is deprecated and will be removed in a future release. Please use the sonarqube-scan-action action instead. The sonarqube-scan-action is a drop-in replacement for this action."
     - name: SonarQube Cloud Scan
-      uses: SonarSource/sonarqube-scan-action@v5.0.0
+      uses: SonarSource/sonarqube-scan-action@0303d6b62e310685c0e34d0b9cde218036885c4d # v5.0.0
       with:
         args: ${{ inputs.args }}
         projectBaseDir: ${{ inputs.projectBaseDir }}
